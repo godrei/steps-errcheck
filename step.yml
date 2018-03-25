@@ -1,6 +1,7 @@
 title: Errcheck
 summary: Check for unchecked errors in go program
 description: Check for unchecked errors in go program
+
 website: https://github.com/godrei/steps-errcheck
 source_code_url: https://github.com/godrei/steps-errcheck
 support_url: https://github.com/godrei/steps-errcheck/issues
