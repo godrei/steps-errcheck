@@ -69,7 +69,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	errcheckCmd := command.NewWithStandardOuts("errcheck", "-asserts=true", "-blank=true", "-verbose", "-abspath", strings.Join(files, "\n"))
+	errcheckCmd := command.NewWithStandardOuts("errcheck", "-asserts=true", "-blank=true", "-verbose", strings.Join(files, "\n"))
 
 	fmt.Println()
 	log.Infof("$ %s", errcheckCmd.PrintableCommandArgs())
