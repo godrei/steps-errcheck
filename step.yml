@@ -1,0 +1,29 @@
+title: Errcheck
+summary: Check for unchecked errors in go program
+description: Check for unchecked errors in go program
+website: https://github.com/godrei/steps-errcheck
+source_code_url: https://github.com/godrei/steps-errcheck
+support_url: https://github.com/godrei/steps-errcheck/issues
+
+type_tags:
+  - test
+
+toolkit:
+  go:
+    package_name: github.com/godrei/steps-errcheck
+
+inputs:
+- include: ""
+  opts:
+    title: Include pattern
+    summary: Run errcheck on matching files.
+    description: |-
+      errcheck will be run on path matching to the given glob pattern.
+
+      Leave this input empty to run errcheck on every .go file in the current working directory.
+- exclude: "*/vendor/*"
+  opts:
+    title: Exclude pattern
+    summary: Skipp errcheck on matching files.
+    description: |-
+      errcheck will be skipped on path matching to the given glob pattern.
