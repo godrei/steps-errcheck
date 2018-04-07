@@ -14,17 +14,9 @@ toolkit:
     package_name: github.com/godrei/steps-errcheck
 
 inputs:
-- include: ""
-  opts:
-    title: Include pattern
-    summary: Run errcheck on matching files.
-    description: |-
-      errcheck will be run on path matching to the given glob pattern.
-
-      Leave this input empty to run errcheck on every .go file in the current working directory.
 - exclude: "*/vendor/*"
   opts:
     title: Exclude pattern
-    summary: Skipp errcheck on matching files.
+    summary: Skipp golint on matching files.
     description: |-
-      errcheck will be skipped on path matching to the given glob pattern.
+      golint will be skipped on path matching to the given glob pattern.

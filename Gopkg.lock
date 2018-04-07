@@ -22,6 +22,12 @@
   revision = "d4d9e08cc4347e8784bb18419fcdceb932e17019"
 
 [[projects]]
+  branch = "master"
+  name = "github.com/godrei/steps-golint"
+  packages = ["gotool"]
+  revision = "ec2bd86970d117ce75236bf6c5ac7d65b6eceb1e"
+
+[[projects]]
   name = "github.com/ryanuber/go-glob"
   packages = ["."]
   revision = "572520ed46dbddaed19ea3d9541bdd0494163693"
@@ -30,6 +36,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "ecfbb99e3fccc0e6303cba7dcb2ffd925a4b405449d64975c01aa3cc82d1a5fd"
+  inputs-digest = "07a8e541d10e9300a8b110ac64ce5d1ee681b6b5abaf20db05a0f05a7e65ff03"
   solver-name = "gps-cdcl"
   solver-version = 1

@@ -24,7 +24,6 @@ workflows:
     - path::./:
         title: Step Test
         inputs:
-        - include:
         - exclude: "*/vendor/*"
 
   # ----------------------------------------------------------------
