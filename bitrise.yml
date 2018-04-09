@@ -11,7 +11,7 @@ workflows:
     before_run:
     - audit-this-step
     steps:
-    - path::$GOPATH/src/github.com/godrei/steps-go-list:
+    - git::https://github.com/godrei/steps-go-list@master:
         title: go list
     after_run:
     - code_analyzis
@@ -20,14 +20,14 @@ workflows:
 
   code_analyzis:
     steps:
-    - path::$GOPATH/src/github.com/godrei/steps-golint:
+    - git::https://github.com/godrei/steps-golint@master:
         title: golint
-    - path::$GOPATH/src/github.com/godrei/steps-errcheck:
+    - git::https://github.com/godrei/steps-errcheck@master:
         title: errcheck
   
   unit_test:
     steps:
-    - path::$GOPATH/src/github.com/godrei/steps-go-test:
+    - git::https://github.com/godrei/steps-go-test@master:
         title: go test
 
   integration_test:
