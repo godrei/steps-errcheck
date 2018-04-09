@@ -4,27 +4,43 @@ default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
 app:
   envs:
   # If you want to share this step into a StepLib
-  - BITRISE_STEP_ID: errcheck
   - BITRISE_STEP_VERSION: "0.9.0"
-  - BITRISE_STEP_GIT_CLONE_URL: https://github.com/godrei/steps-errcheck
-  - MY_STEPLIB_REPO_FORK_GIT_URL: $MY_STEPLIB_REPO_FORK_GIT_URL
 
 workflows:
   test:
     before_run:
     - audit-this-step
     steps:
+    - path::$GOPATH/src/github.com/godrei/steps-go-list:
+        title: go list
+    after_run:
+    - code_analyzis
+    - unit_test
+    - integration_test
+
+  code_analyzis:
+    steps:
+    - path::$GOPATH/src/github.com/godrei/steps-golint:
+        title: golint
+    - path::$GOPATH/src/github.com/godrei/steps-errcheck:
+        title: errcheck
+  
+  unit_test:
+    steps:
+    - path::$GOPATH/src/github.com/godrei/steps-go-test:
+        title: go test
+
+  integration_test:
+    steps:
     - change-workdir:
-        title: Switch working dir to test / _tmp dir
-        description: |-
-        run_if: false
+        title: Switch working dir to ./_tmp dir
         inputs:
         - path: ./_tmp
         - is_create_path: true
     - path::./:
         title: Step Test
         inputs:
-        - exclude: "*/vendor/*"
+        - packages: $BITRISE_GO_PACKAGES
 
   # ----------------------------------------------------------------
   # --- workflows to Share this step into a Step Library
@@ -41,9 +57,9 @@ workflows:
     envs:
       # if you want to share this step into a StepLib
       - MY_STEPLIB_REPO_FORK_GIT_URL: $MY_STEPLIB_REPO_FORK_GIT_URL
-      - BITRISE_STEP_ID: $BITRISE_STEP_ID
       - BITRISE_STEP_VERSION: $BITRISE_STEP_VERSION
-      - BITRISE_STEP_GIT_CLONE_URL: $BITRISE_STEP_GIT_CLONE_URL
+      - BITRISE_STEP_ID: errcheck
+      - BITRISE_STEP_GIT_CLONE_URL: https://github.com/godrei/steps-errcheck.git
     description: |-
       If this is the first time you try to share a Step you should
       first call: $ bitrise share

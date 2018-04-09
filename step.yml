@@ -1,6 +1,9 @@
 title: Errcheck
 summary: Check for unchecked errors in go program
-description: Check for unchecked errors in go program
+description: |-
+  Runs golint command on the given packages one-by-one:
+  
+  `errcheck -asserts=true -blank=true -verbose <package>`
 
 website: https://github.com/godrei/steps-errcheck
 source_code_url: https://github.com/godrei/steps-errcheck
@@ -14,9 +17,11 @@ toolkit:
     package_name: github.com/godrei/steps-errcheck
 
 inputs:
-- exclude: "*/vendor/*"
+- packages: $BITRISE_GO_PACKAGES
   opts:
-    title: Exclude pattern
-    summary: Skipp golint on matching files.
+    title: errcheck target packages
+    summary: errcheck target packages
     description: |-
-      golint will be skipped on path matching to the given glob pattern.
+      Comma separated list of go packages, to run the errcheck command against.
+
+      Example: "github.com/owner/repo,github.com/owner/repo/package"
