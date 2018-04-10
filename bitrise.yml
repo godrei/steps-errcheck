@@ -64,7 +64,7 @@ workflows:
   create-release:
     steps:
     - script:
-        title:
+        title: Create release
         inputs:
         - content: |
             #!/bin/bash
@@ -78,6 +78,7 @@ workflows:
   audit-this-step:
     steps:
     - script:
+        title: Audit step.yml
         inputs:
         - content: |-
             #!/bin/bash
@@ -90,7 +91,7 @@ workflows:
       - MY_STEPLIB_REPO_FORK_GIT_URL: $MY_STEPLIB_REPO_FORK_GIT_URL
       - BITRISE_STEP_VERSION: $BITRISE_STEP_VERSION
       - BITRISE_STEP_ID: errcheck
-      - BITRISE_STEP_GIT_CLONE_URL: https://github.com/godrei/steps-errcheck.git
+      - BITRISE_STEP_GIT_CLONE_URL: https://github.com/bitrise-steplib/steps-errcheck.git
     description: |-
       If this is the first time you try to share a Step you should
       first call: $ bitrise share
@@ -116,6 +117,7 @@ workflows:
     - audit-this-step
     steps:
     - script:
+        title: Share this step
         inputs:
         - content: |-
             #!/bin/bash
